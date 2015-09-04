@@ -1,4 +1,5 @@
-/platforms/
-/plugins/
-resources/
-/www/lib
+platforms/*
+plugins/*
+resources/*
+/www/lib/*
+!*.gitkeep
