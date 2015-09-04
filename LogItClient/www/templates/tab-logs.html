@@ -1,0 +1,14 @@
+<ion-view view-title="LogIt">
+
+	<ion-content class="padding">
+		<label class="item item-input">
+			<span class="input-label">Log here</span>
+		  	<input type="text">
+		</label>
+		<ion-list>
+		    <ion-item ng-repeat="log in logs">
+				{{log.content}}
+		     </ion-item>
+   		</ion-list>
+	</ion-content>
+</ion-view>
