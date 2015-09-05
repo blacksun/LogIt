@@ -18,6 +18,15 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new JsonModel(['content' => 'test']);
+        header('Access-Control-Allow-Origin: *');
+        $object = new \stdClass();
+        $object->id = 1;
+        $object->content = 'prova 1 2 3';
+        $object1 = new \stdClass();
+        $object1->id = 2;
+        $object1->content = 'test';
+        return new JsonModel([
+            $object, $object1]
+        );
     }
 }
