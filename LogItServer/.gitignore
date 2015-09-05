@@ -3,3 +3,6 @@
 /.project
 /vendor/*
 !*.gitkeep
+/composer.lock
+/composer.phar
+/zftool.phar
