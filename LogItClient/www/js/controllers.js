@@ -1,6 +1,6 @@
 angular.module('LogIt.controllers', [])
 
-.controller('LogsCtrl', function($scope, Logs) {
+.controller('LogsCtrl', function($scope, $http) {
 	  // With the new view caching in Ionic, Controllers are only called
 	  // when they are recreated or on app start, instead of every page change.
 	  // To listen for when this page is active (for example, to refresh data),
@@ -15,7 +15,9 @@ angular.module('LogIt.controllers', [])
 //	  }, { 
 //	    content: 'modifying, will it work?'
 //	  }];
-	  $scope.logs = Logs.all();
+	  $http.get('http://logit').then(function(resp) {
+		  $scope.logs = resp.data;
+	  });
 //	  $scope.remove = function(log) {
 //		  Logs.remove(log);
 //	  };

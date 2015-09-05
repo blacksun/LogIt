@@ -49,7 +49,7 @@ angular.module('LogIt.services', [])
   };
 })
 
-.factory('Logs', function() {
+.factory('Logs', function($http) {
 	  // Might use a resource here that returns a JSON array
 
 	  // Some fake testing data
@@ -63,10 +63,15 @@ angular.module('LogIt.services', [])
 	    id: 2,
 	    content: 'modifying, will it work?',
 	  }];
-
+	  promise  = $http.get('http://logit').then(function(resp) {
+		  return resp.data;
+	  });
+	  
+	  logs = promise.resolve();
+	  console.log(logs);
 	  return {
 	    all: function() {
-	      return logs;
+	      return logs.value;
 	    },
 	    remove: function(logs) {
 	    	logs.splice(logs.indexOf(logs), 1);
