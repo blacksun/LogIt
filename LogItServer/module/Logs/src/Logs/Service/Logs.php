@@ -1,17 +1,28 @@
 <?php
 namespace Logs\Service;
 
+use Logs\Table\Logs as LogsTable;
 
 class Logs
 {
+    /**
+     * 
+     * @var Logs
+     */
+    private $logsTable;
+    
+    public function setTable(LogsTable $logsTable)
+    {
+        $this->table = $logsTable;
+    }
+    
     public function getLasts()
     {
-        $object = new \stdClass();
-        $object->id = 1;
-        $object->content = 'prova 1 2 3';
-        $object1 = new \stdClass();
-        $object1->id = 2;
-        $object1->content = 'test';
-        return [$object, $object1];
+        return $this->table->getLasts()->toArray();
+    }
+    
+    public function addLog($id)
+    {
+        
     }
 }

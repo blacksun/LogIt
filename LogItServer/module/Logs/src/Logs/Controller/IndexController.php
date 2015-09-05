@@ -24,4 +24,19 @@ class IndexController extends AbstractActionController
         
         return new JsonModel($lastLogs);
     }
+    
+    public function addAction()
+    {
+        $success = false;
+        header('Access-Control-Allow-Origin: *');
+        $id = $this->params('id');
+        if ($this->getRequest()->isPost()) {
+            $success = $this->logsService->addLog($id);
+        } else {
+            $success = $this->logsService->get($id);
+        }
+        
+        
+        return new JsonModel($success);
+    }
 }
