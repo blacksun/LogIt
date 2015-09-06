@@ -24,4 +24,9 @@ class Logs
          $select->order('time ' . Select::ORDER_DESCENDING)->limit($number);
          return $this->tableGateway->selectWith($select);
      }
+     
+     public function insert($data)
+     {
+         return $this->tableGateway->insert($data);
+     }
 }

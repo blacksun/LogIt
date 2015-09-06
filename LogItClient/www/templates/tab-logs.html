@@ -1,10 +1,17 @@
 <ion-view view-title="LogIt">
 
 	<ion-content class="padding">
-		<label class="item item-input">
-			<span class="input-label">Log here</span>
-		  	<input type="text">
-		</label>
+		<form ng-submit="addLog(newlog)">
+        	<div class="list">
+          		<label class="item item-input">
+            		<input type="text" placeholder="What are you doing?" ng-model="newlog.content">
+          		</label>
+        	</div>
+        	<div class="padding">
+          		<button type="submit" class="button button-block">LogIt!</button>
+        	</div>
+      	</form>
+
 		<ion-list>
 		    <ion-item ng-repeat="log in logs">
 				{{log.content}}

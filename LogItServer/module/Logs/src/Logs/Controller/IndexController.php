@@ -27,13 +27,14 @@ class IndexController extends AbstractActionController
     
     public function addAction()
     {
-        $success = false;
         header('Access-Control-Allow-Origin: *');
-
+        header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+        
+        $success = false;
         if ($this->getRequest()->isPost()) {
             $success = $this->logsService->addLog($this->params()->fromPost());
         }
         
-        return new JsonModel($success);
+        return new JsonModel([$success]);
     }
 }

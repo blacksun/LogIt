@@ -13,16 +13,18 @@ class Logs
     
     public function setTable(LogsTable $logsTable)
     {
-        $this->table = $logsTable;
+        $this->logsTable = $logsTable;
     }
     
     public function getLasts()
     {
-        return $this->table->getLasts()->toArray();
+        return $this->logsTable->getLasts()->toArray();
     }
     
     public function addLog($params)
     {
-        return $this->table->insert($params);
+        $datetime = new \DateTime($params['time']);
+        $params['time'] = $datetime->format('Y-m-d H:i:s');
+        return $this->logsTable->insert($params);
     }
 }
