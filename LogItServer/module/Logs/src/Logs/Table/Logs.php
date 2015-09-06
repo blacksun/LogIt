@@ -2,6 +2,7 @@
 namespace Logs\Table;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\Sql\Select;
 
 class Logs
 {
@@ -19,7 +20,8 @@ class Logs
      
      public function getLasts($number = self::NUMBER_LASTS)
      {
-         $select = $this->tableGateway->getSql()->select()->limit($number);
+         $select = $this->tableGateway->getSql()->select();
+         $select->order('time ' . Select::ORDER_DESCENDING)->limit($number);
          return $this->tableGateway->selectWith($select);
      }
 }

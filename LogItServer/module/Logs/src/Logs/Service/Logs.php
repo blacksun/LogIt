@@ -21,8 +21,8 @@ class Logs
         return $this->table->getLasts()->toArray();
     }
     
-    public function addLog($id)
+    public function addLog($params)
     {
-        
+        return $this->table->insert($params);
     }
 }
